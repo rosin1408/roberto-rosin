@@ -1,33 +1,18 @@
 package br.com.rosin.robertorosin.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import br.com.rosin.robertorosin.api.CRUDService;
 import br.com.rosin.robertorosin.model.Livro;
-import br.com.rosin.robertorosin.repository.LivroRepository;
 
 @Service
-public class LivroService {
+public class LivroService extends CRUDService<Livro> {	
 	
 	@Autowired
-	private LivroRepository repository;
-	
-	public void salvar(Livro livro) {
-		repository.save(livro);
-	}
-
-	public Livro find(Long codigo) {
-		return repository.findOne(codigo);
-	}
-
-	public List<Livro> findAll() {
-		return repository.findAll();
-	}
-
-	public void delete(Long codigo) {
-		repository.delete(codigo);
+	public LivroService(JpaRepository<Livro, Long> repository) {
+		super(repository);
 	}
 
 }
