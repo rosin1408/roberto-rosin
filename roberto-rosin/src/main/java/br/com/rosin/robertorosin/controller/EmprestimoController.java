@@ -54,7 +54,6 @@ public class EmprestimoController {
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public String salvar(@Valid Emprestimo emprestimo, BindingResult erros, Model model) {
 		if (erros.hasErrors()) {
-			erros.getAllErrors().forEach(e -> System.out.println(e.getDefaultMessage()));
 			return FORM;
 		}
 		if (service.isValid(emprestimo, model)) {
